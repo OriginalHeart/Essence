@@ -382,81 +382,17 @@
 
       
         
-          
-            <p><strong>工欲善其事,必先利其器</strong><br><code>git init</code> 在工作目录初始化新仓库</p>
+          <p><strong>工欲善其事,必先利其器</strong><br><code>git init</code> 在工作目录初始化新仓库</p>
 <p><code>git clone git://github.com/xxxx/test.git</code>  从现有仓库克隆，会在当前目录下创建一个名为<code>test</code>的目录</p>
 <p><code>git clone git://github.com/xxxx/test.git  myGit</code>  从现有仓库克隆，自定义新建的仓库的目录名称为<code>myGit</code></p>
 <p><code>git status</code> 检查当前文件的状态</p>
-<p><code>git add [file]</code> 将未缓存的改动添加（添加到暂存区），状态变为已缓存（可反复多次使用，添加多个文件）</p>
-<p><code>git add *.*</code> 一次性添加所有的文件到暂存区</p>
-<p><code>git add -f [file]</code> 强制添加到暂存区</p>
-<p><code>git commit -m &quot;提交说明&quot;</code> 将已缓存的改动提交，提交的同时同时跟上本次的提交说明(这个命令只负责提交暂存区的文件)</p>
-<p><code>git commit -a</code> 会把已经改动的（已经添加到暂存区）的文件的改动add进来，然后提交，对于那些没有被添加到暂存区的改动，需要再次add</p>
-<p><code>git commit --amend</code> 增补提交，会使用与当前提交的节点相同的父节点进行一次新的提交，旧的提交将会被取消</p>
-<p><code>git diff</code> 查看不同,比较工作目录中当前文件和暂存区域快照之间的区别，也就是修改之后没有暂存起来的内容</p>
-<p><code>git diff --cached</code> 对比已暂存起来的文件和上次提交时的文件的区别</p>
-<p><code>git diff HEAD</code> 比较工作目录和上次提交之间的所有改动</p>
-<p><code>git diff [version tag]</code> 查看自从某个版本之后都改动了什么</p>
-<p><code>git diff [branch A] [branch B]</code> 用来对比两个分支，返回两个分支修改的所有文件</p>
-<p><code>git diff [branch A] [branch B] test.md</code> 对比两个分支中指定文件<code>test.md</code>的差异</p>
-<p><code>git reset --hard &quot;版本号&quot;</code> 回滚到指定版本</p>
-<p><code>git reflog</code> 查看命令历史，记录每一次命令操作</p>
-<p><code>git checkout -- file</code> 把文件在工作区的修改全部撤销</p>
-<p><code>git revert [version]</code> 还原一个版本</p>
-<p><code>git reset HEAD file</code>  可以把暂存区的修改全部撤销，重新放回工作区</p>
-<p><code>git rm file</code> 删除文件</p>
-<blockquote>
-<p>如果文件被误删到暂存区，可以这样恢复：<br>    <code>git reset HEAD file</code><br>    <code>git checkout -- file</code></p>
-</blockquote>
-<p><code>git push [origin]</code>  将本地库的代码提交到远程库</p>
-<p><code>git pull [origin master]</code> 从其他版本库将代码更新到本地（将<code>origin</code>这个版本库的代码更新到 <code>master</code>主枝）</p>
-<p><code>git branch [mybranch]</code> 创建分支mybranch</p>
-<p><code>git checkout [mybranch]</code>  切换分支</p>
-<p><code>git checkout -b [mybranch]</code> 创建分支并切换到分支mybranch</p>
-<p><code>git rebase master</code> 更新master主线上的内容到该分支上</p>
-<p><code>git checkout master</code>  切换到分支master</p>
-<p><code>git rebase [mybranch]</code> 更新mybranch上的内容到master主线上</p>
-<p><code>git branch -d [mybranch]</code> 删除mybranch分支</p>
-<p><code>git branch -D [mybranch]</code> 强制删除mybranch分支</p>
-<p><code>git branch</code>  列出所有分支,当前分支前面会有一个<code>*</code></p>
-<p><code>git branch -v</code> 查看所有分支最后一次提交</p>
-<p><code>git merge [mybranch]</code> 合并分支mybranch到当前分支，fast forward合并，只保留单条分支记录</p>
-<p><code>git merge --no-ff -m &quot;合并说明&quot; [branch]</code> 普通合并，可以保存之前的分支历史，能够更好查看<code>merge</code>历史，以及分支状态</p>
-<p><code>git branch --merged</code> 查看哪些分支合并到当前分支</p>
-<p><code>git branch --no-merged</code> 查看还有哪些分支未合并到当前分支</p>
-<p><code>git fetch orign</code>  更新远程到本地</p>
-<p><code>git push orign [mybranch]</code> 推送分支</p>
-<p><code>git log --graph</code> 查看分支合并图</p>
-<p><code>git log</code> 查看提交历史</p>
-<p><code>git log -1</code> 查看最后一次提交</p>
-<p><code>git stash</code>  把当前工作现场”存储”起来</p>
-<p><code>git stash list</code> 查看存储起来的工作现场</p>
-<p><code>git stash apply</code> 恢复工作现场，但是<code>stash</code>内容并不删除</p>
-<p><code>git stash drop</code> 删除<code>stash</code>内容</p>
-<p><code>git stash pop</code> 恢复的同时，把<code>stash</code>也删除</p>
-<p><code>git stash apply stash@{0}</code>  恢复指定的<code>stash</code>，可以多次<code>stash</code></p>
-<p><code>git remote</code> 查看远程库信息</p>
-<p><code>git remote -v</code> 查看更加详细的远程库信息</p>
-<p><code>git tag [v1.0]</code> 创建新的标签</p>
-<p><code>git tag</code> 查看所有标签</p>
-<p><code>git tag [v0.9] [6224937]</code>  可以对历史的提交打标签，<code>6224937</code>这个是提交<code>id</code></p>
-<p><code>git tag show [v0.9]</code> 查看标签信息</p>
-<p><code>git tag -a [v0.9] -m [&quot;tag comment&quot;]</code>  创建带有说明的标签， <code>-a</code>指定标签名 <code>-m</code>指定说明文字</p>
-<p><code>git tag -s [tag-name] -m [&quot;tag comment&quot;]</code> 采用PGP签名标签</p>
-<p><code>git tag -d [tag-name]</code> 删除标签</p>
-<p><code>git push origin [tag-name]</code>  推送标签到远程</p>
-<p><code>删除推送到远程的标签:</code></p>
-<blockquote>
-<p>先删除本地的: <code>git tag -d [tag-name]</code><br>在删除远程的: <code>git push origin :refs/tags/[tag-name]</code></p>
-</blockquote>
-<p><code>配置别名:</code> <code>git config --global alias.[别名] [git命令]</code></p>
-<blockquote>
-<p><code>git status</code> —&gt; <code>git config --global alias.s status</code><br><code>git checkout</code> —-&gt; <code>git config --global alias.co checkout</code><br><code>git commit</code> —-&gt; <code>git config --global alias.c commit</code><br><code>git branch</code> —-&gt; <code>git config --global alias.b branch</code><br><code>git reset HEAD [file] ---&gt;</code>git config –global alias.unstage ‘reset HEAD’ <code>`撤销修改</code><br><code>git log -1</code> —-&gt; <code>git config --global alias.last &#39;log -1&#39;</code> `查看最后一次提交``</p>
-<p><code>--global</code>针对当前用户起作用，全局的。如果不加，只针对当前仓库起作用</p>
-<p>当前用户的git配置文件为用户主目录下的一个隐藏文件<code>.gitconfig</code>,可以直接修改这个文件配置别名，如果配置错误，可以删掉文件重新通过命令配置</p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/essence/2017/03/16/git-md/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
